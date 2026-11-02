@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>მარკეტი — ონლაინ მაღაზია - ვერსია 1.2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="topbar">უფასო მიწოდება 100 ₾-ზე მეტი შეკვეთისთვის</div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">მარკეტი</a>
+      <form class="search" role="search" onsubmit="return false">
+        <input type="search" placeholder="მოძებნე პროდუქტი..." aria-label="ძებნა">
+        <button type="submit">ძებნა</button>
+      </form>
+      <nav class="actions">
+        <a href="#">შესვლა</a>
+        <a href="#" class="cart">კალათა <span id="cart-count">0</span></a>
+      </nav>
+    </div>
+    <nav class="categories">
+      <div class="container">
+        <a href="#">ელექტრონიკა</a>
+        <a href="#">ტანსაცმელი</a>
+        <a href="#">სახლი და ბაღი</a>
+        <a href="#">სპორტი</a>
+        <a href="#">სილამაზე</a>
+        <a href="#" class="sale-link">ფასდაკლებები</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>ახალი სეზონი, ახალი ფასები</h1>
+          <p>აირჩიე ათასობით პროდუქტი ერთ ადგილას. სწრაფი მიწოდება მთელ საქართველოში.</p>
+          <a href="#products" class="btn">იყიდე ახლავე</a>
+        </div>
+        <div class="hero-visual" aria-hidden="true">🛍️</div>
+      </div>
+    </section>
+
+    <section class="container perks">
+      <div><strong>სწრაფი მიწოდება</strong><span>1–2 სამუშაო დღეში</span></div>
+      <div><strong>უსაფრთხო გადახდა</strong><span>ბარათით ან ნაღდით</span></div>
+      <div><strong>14 დღე დაბრუნება</strong><span>კითხვების გარეშე</span></div>
+    </section>
+
+    <section class="container section" id="products">
+      <div class="section-head">
+        <h2>პოპულარული პროდუქტები</h2>
+        <a href="#">ყველას ნახვა</a>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="thumb" style="--bg:#E4EAFF">🎧<span class="badge">-20%</span></div>
+          <h3>უსადენო ყურსასმენი</h3>
+          <p class="price"><b>89 ₾</b> <s>112 ₾</s></p>
+          <button class="add">კალათაში დამატება</button>
+        </article>
+        <article class="card">
+          <div class="thumb" style="--bg:#FFE9E3">👟</div>
+          <h3>სპორტული ბოტასი</h3>
+          <p class="price"><b>129 ₾</b></p>
+          <button class="add">კალათაში დამატება</button>
+        </article>
+        <article class="card">
+          <div class="thumb" style="--bg:#E3F5EA">⌚<span class="badge">ახალი</span></div>
+          <h3>სმარტ საათი</h3>
+          <p class="price"><b>199 ₾</b></p>
+          <button class="add">კალათაში დამატება</button>
+        </article>
+        <article class="card">
+          <div class="thumb" style="--bg:#FFF4D6">🎒</div>
+          <h3>ქალაქის ზურგჩანთა</h3>
+          <p class="price"><b>65 ₾</b> <s>80 ₾</s></p>
+          <button class="add">კალათაში დამატება</button>
+        </article>
+        <article class="card">
+          <div class="thumb" style="--bg:#EEE4FF">📷</div>
+          <h3>ციფრული კამერა</h3>
+          <p class="price"><b>749 ₾</b></p>
+          <button class="add">კალათაში დამატება</button>
+        </article>
+        <article class="card">
+          <div class="thumb" style="--bg:#E0F4F7">☕</div>
+          <h3>ყავის აპარატი</h3>
+          <p class="price"><b>240 ₾</b><s>290 ₾</s></p>
+          <button class="add">კალათაში დამატება</button>
+        </article>
+        <article class="card">
+          <div class="thumb" style="--bg:#FDE4EE">👜<span class="badge">-15%</span></div>
+          <h3>ტყავის ჩანთა</h3>
+          <p class="price"><b>155 ₾</b> <s>182 ₾</s></p>
+          <button class="add">კალათაში დამატება</button>
+        </article>
+        <article class="card">
+          <div class="thumb" style="--bg:#E8EDF2">⌨️</div>
+          <h3>მექანიკური კლავიატურა</h3>
+          <p class="price"><b>110 ₾</b></p>
+          <button class="add">კალათაში დამატება</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container">
+        <h2>მიიღე 10% ფასდაკლება პირველ შეკვეთაზე</h2>
+        <form onsubmit="return false">
+          <input type="email" placeholder="შენი ელფოსტა" aria-label="ელფოსტა">
+          <button type="submit" class="btn">გამოწერა</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="#" class="logo">მარკეტი</a>
+        <p>ონლაინ მაღაზია, სადაც ყველაფერი ერთ ადგილას გხვდება.</p>
+      </div>
+      <div>
+        <h4>კომპანია</h4>
+        <a href="#">ჩვენ შესახებ</a>
+        <a href="#">კონტაქტი</a>
+        <a href="#">ვაკანსიები</a>
+      </div>
+      <div>
+        <h4>დახმარება</h4>
+        <a href="#">მიწოდება</a>
+        <a href="#">დაბრუნება</a>
+        <a href="#">ხშირი კითხვები</a>
+      </div>
+    </div>
+    <p class="copy">© 2026 მარკეტი. ყველა უფლება დაცულია.</p>
+  </footer>
+
+  <script>
+    var count = 0, counter = document.getElementById('cart-count');
+    document.querySelectorAll('.add').forEach(function (btn) {
+      btn.addEventListener('click', function () { counter.textContent = ++count; });
+    });
+  </script>
+</body>
+</html>
