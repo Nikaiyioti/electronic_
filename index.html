@@ -1,11 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ვოლტი — ელექტრონიკა</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@300;400;600&family=Noto+Sans+Georgian:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
+    <!-- კალათის მდგომარეობა (STATE): თითო ჩეკბოქსი = თითო პროდუქტი, --p = ფასი -->
+    <input type="checkbox" id="cart-toggle" class="sr" aria-label="კალათის გახსნა">
+    <input type="checkbox" id="p1" class="pick sr" style="--p:289" aria-label="უკაბელო ყურსასმენი">
+    <input type="checkbox" id="p2" class="pick sr" style="--p:349" aria-label="სმარტ საათი">
+    <input type="checkbox" id="p3" class="pick sr" style="--p:159" aria-label="პორტატული დინამიკი">
+    <input type="checkbox" id="p4" class="pick sr" style="--p:1290" aria-label="სმარტფონი">
+    <input type="checkbox" id="p5" class="pick sr" style="--p:179" aria-label="ყურსასმენის ქეისი">
+    <input type="checkbox" id="p6" class="pick sr" style="--p:699" aria-label="კომპაქტური კამერა">
+
+    <header>
+        <span class="logo">ვოლტი</span>
+        <label class="cart-btn" for="cart-toggle">კალათა <span id="cart-count"></span></label>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1>ტექნიკა, რომელიც არ ყვირის</h1>
+            <p>ექვსი მოწყობილობა ყოველდღიურობისთვის. სუფთა ფორმა, მშვიდი ხმა, ზედმეტი ღილაკების გარეშე.</p>
+            <a class="cta" href="#catalog">კატალოგის ნახვა</a>
+        </div>
+
+        <div class="stage" aria-hidden="true">
+            <div class="s s1"></div>
+            <div class="s s2">
+                <div class="rings"><b></b><b></b><b></b></div>
+                <div class="hp"><i></i><i></i></div>
+            </div>
+            <div class="s s3"></div>
+        </div>
+    </section>
+
+    <main id="catalog">
+        <div class="section-head">
+            <h2>კატალოგი</h2>
+            <span>6 მოწყობილობა</span>
+        </div>
+
+        <div class="grid">
+            <article class="product">
+                <div class="frame" style="--t:#c9d8e6;--o:#151a24">
+                    <div class="obj o-hp"></div>
+                    <label class="add a1" for="p1"></label>
+                </div>
+                <div class="meta">
+                    <h3>უკაბელო ყურსასმენი</h3><span class="price">289 ₾</span>
+                </div>
+            </article>
+
+            <article class="product">
+                <div class="frame" style="--t:#ead3d0;--o:#f4f1ea;--a:#1b2233">
+                    <div class="obj o-watch"></div>
+                    <label class="add a2" for="p2"></label>
+                </div>
+                <div class="meta">
+                    <h3>სმარტ საათი</h3><span class="price">349 ₾</span>
+                </div>
+            </article>
+
+            <article class="product">
+                <div class="frame" style="--t:#d6dcc0;--o:#2f3fd8;--a:#f4f1ea">
+                    <div class="obj o-spk"></div>
+                    <label class="add a3" for="p3"></label>
+                </div>
+                <div class="meta">
+                    <h3>პორტატული დინამიკი</h3><span class="price">159 ₾</span>
+                </div>
+            </article>
+
+            <article class="product">
+                <div class="frame" style="--t:#f2dfa6;--o:#151a24">
+                    <div class="obj o-phone"></div>
+                    <label class="add a4" for="p4"></label>
+                </div>
+                <div class="meta">
+                    <h3>სმარტფონი</h3><span class="price">1290 ₾</span>
+                </div>
+            </article>
+
+            <article class="product">
+                <div class="frame" style="--t:#cdc6e3;--o:#f4f1ea;--a:#e0603f">
+                    <div class="obj o-case"></div>
+                    <label class="add a5" for="p5"></label>
+                </div>
+                <div class="meta">
+                    <h3>ყურსასმენის ქეისი</h3><span class="price">179 ₾</span>
+                </div>
+            </article>
+
+            <article class="product">
+                <div class="frame" style="--t:#b7d4cc;--o:#e0603f;--a:#2f3fd8">
+                    <div class="obj o-cam"></div>
+                    <label class="add a6" for="p6"></label>
+                </div>
+                <div class="meta">
+                    <h3>კომპაქტური კამერა</h3><span class="price">699 ₾</span>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <section class="promise">
+        <div><strong>2 წელი</strong><span>გარანტია ყველა მოწყობილობაზე</span></div>
+        <div><strong>14 დღე</strong><span>დაბრუნება კითხვების გარეშე</span></div>
+        <div><strong>უფასო</strong><span>მიწოდება თბილისში</span></div>
+    </section>
+
+    <footer>© ვოლტი</footer>
+
+    <!-- კალათის პანელი -->
+    <label class="overlay" for="cart-toggle"></label>
+    <aside id="cart" aria-label="კალათა">
+        <div class="cart-head">
+            <h2>კალათა</h2>
+            <label class="close" for="cart-toggle">✕</label>
+        </div>
+
+        <ul id="cart-items">
+            <li class="empty">კალათა ცარიელია.</li>
+
+            <li class="item l1">
+                <div class="thumb" style="--t:#c9d8e6;--o:#151a24"></div>
+                <span class="name">უკაბელო ყურსასმენი</span><span class="sum">289 ₾</span>
+                <label class="remove" for="p1">წაშლა</label>
+            </li>
+            <li class="item l2">
+                <div class="thumb" style="--t:#ead3d0;--o:#f4f1ea"></div>
+                <span class="name">სმარტ საათი</span><span class="sum">349 ₾</span>
+                <label class="remove" for="p2">წაშლა</label>
+            </li>
+            <li class="item l3">
+                <div class="thumb" style="--t:#d6dcc0;--o:#2f3fd8"></div>
+                <span class="name">პორტატული დინამიკი</span><span class="sum">159 ₾</span>
+                <label class="remove" for="p3">წაშლა</label>
+            </li>
+            <li class="item l4">
+                <div class="thumb" style="--t:#f2dfa6;--o:#151a24"></div>
+                <span class="name">სმარტფონი</span><span class="sum">1290 ₾</span>
+                <label class="remove" for="p4">წაშლა</label>
+            </li>
+            <li class="item l5">
+                <div class="thumb" style="--t:#cdc6e3;--o:#f4f1ea"></div>
+                <span class="name">ყურსასმენის ქეისი</span><span class="sum">179 ₾</span>
+                <label class="remove" for="p5">წაშლა</label>
+            </li>
+            <li class="item l6">
+                <div class="thumb" style="--t:#b7d4cc;--o:#e0603f"></div>
+                <span class="name">კომპაქტური კამერა</span><span class="sum">699 ₾</span>
+                <label class="remove" for="p6">წაშლა</label>
+            </li>
+        </ul>
+
+        <div class="cart-foot">
+            <div class="total"><span>ჯამი</span><strong id="cart-total"></strong></div>
+            <a class="checkout" href="#">შეკვეთის გაფორმება</a>
+        </div>
+    </aside>
+
 </body>
+
 </html>

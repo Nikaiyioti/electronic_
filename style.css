@@ -1,0 +1,849 @@
+:root {
+    --fog: #e9edf0;
+    --ink: #151a24;
+    --muted: #6b7380;
+    --line: #d3d9df;
+    --cobalt: #2f3fd8;
+    --serif: "Noto Serif Georgian", Georgia, serif;
+    --sans: "Noto Sans Georgian", system-ui, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    counter-reset: n total;
+    /* n = რაოდენობა, total = ჯამი */
+    background: var(--fog);
+    color: var(--ink);
+    font: 400 1rem/1.6 var(--sans);
+    -webkit-font-smoothing: antialiased;
+}
+
+.sr {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+label {
+    cursor: pointer;
+}
+
+/* ---------- CART STATE ---------- */
+.pick:checked {
+    counter-increment: n 1 total var(--p);
+}
+
+#cart-count::before {
+    content: counter(n);
+}
+
+#cart-total::before {
+    content: counter(total) " ₾";
+}
+
+#cart-toggle:focus-visible~header .cart-btn {
+    outline: 2px solid var(--cobalt);
+    outline-offset: 3px;
+}
+
+/* ---------- Header ---------- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px max(5vw, 20px);
+    background: color-mix(in srgb, var(--fog) 82%, transparent);
+    backdrop-filter: blur(14px);
+}
+
+.logo {
+    font: 600 1.5rem/1 var(--serif);
+    letter-spacing: -.02em;
+}
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 9px 9px 18px;
+    border: 1px solid var(--ink);
+    border-radius: 99px;
+    transition: background .2s, color .2s;
+}
+
+.cart-btn:hover {
+    background: var(--ink);
+    color: var(--fog);
+}
+
+#cart-count {
+    display: grid;
+    place-items: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    border-radius: 99px;
+    background: var(--cobalt);
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 500;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px max(5vw, 20px) 96px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+h1 {
+    font: 300 clamp(2.6rem, 6.4vw, 5.4rem)/1.08 var(--serif);
+    letter-spacing: -.035em;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    max-width: 38ch;
+    color: var(--muted);
+    margin-bottom: 32px;
+}
+
+.cta {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 99px;
+    background: var(--ink);
+    color: var(--fog);
+    text-decoration: none;
+    transition: background .2s, transform .2s;
+}
+
+.cta:hover {
+    background: var(--cobalt);
+    transform: translateY(-2px);
+}
+
+/* სცენა: სამი თაღი და დიდი ყურსასმენი ბგერის რგოლებით */
+.stage {
+    position: relative;
+    height: clamp(320px, 44vw, 480px);
+}
+
+.s {
+    position: absolute;
+    bottom: 0;
+    border-radius: 999px 999px 0 0;
+    animation: rise 1s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.s1 {
+    left: 0;
+    width: 30%;
+    height: 58%;
+    background: #b7d4cc;
+    animation-delay: .05s;
+}
+
+.s2 {
+    left: 22%;
+    width: 56%;
+    height: 100%;
+    background: var(--cobalt);
+    animation-delay: .2s;
+    overflow: hidden;
+}
+
+.s3 {
+    right: 0;
+    width: 30%;
+    height: 44%;
+    background: #f2dfa6;
+    animation-delay: .35s;
+}
+
+@keyframes rise {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+}
+
+.rings b {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 50%;
+    aspect-ratio: 1;
+    border: 2px solid rgba(255, 255, 255, .4);
+    border-radius: 50%;
+    animation: ring 2.4s ease-out 3 both;
+}
+
+.rings b:nth-child(2) {
+    animation-delay: .8s;
+}
+
+.rings b:nth-child(3) {
+    animation-delay: 1.6s;
+}
+
+@keyframes ring {
+    from {
+        transform: translate(-50%, -50%) scale(.6);
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(-50%, -50%) scale(2.4);
+        opacity: 0;
+    }
+}
+
+.hp {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 62%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+}
+
+.hp::before {
+    content: "";
+    position: absolute;
+    inset: 0 9% 20% 9%;
+    border: clamp(10px, 1.8vw, 20px) solid #f4f1ea;
+    border-bottom: 0;
+    border-radius: 999px 999px 0 0;
+}
+
+.hp i {
+    position: absolute;
+    bottom: 6%;
+    width: 24%;
+    height: 46%;
+    background: #f4f1ea;
+    border-radius: 40% / 30%;
+}
+
+.hp i::after {
+    content: "";
+    position: absolute;
+    inset: 18% 14%;
+    background: #f0b8a8;
+    border-radius: inherit;
+}
+
+.hp i:first-child {
+    left: 0;
+}
+
+.hp i:last-child {
+    right: 0;
+}
+
+/* ---------- Products ---------- */
+main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 max(5vw, 20px) 96px;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 40px;
+    border-top: 1px solid var(--ink);
+    padding-top: 18px;
+}
+
+.section-head h2 {
+    font: 400 1.6rem/1.2 var(--serif);
+    letter-spacing: -.02em;
+}
+
+.section-head span {
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px 40px;
+}
+
+.product:nth-child(3n+2) {
+    margin-top: 56px;
+}
+
+.frame {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: var(--t);
+    border-radius: 999px 999px 10px 10px;
+    margin-bottom: 18px;
+}
+
+.obj {
+    position: absolute;
+    left: 50%;
+    bottom: 17%;
+    transform: translateX(-50%);
+    transition: transform .4s cubic-bezier(.2, .8, .2, 1);
+    filter: drop-shadow(0 16px 12px rgba(21, 26, 36, .16));
+}
+
+.obj::before,
+.obj::after {
+    content: "";
+    position: absolute;
+}
+
+.product:hover .obj {
+    transform: translateX(-50%) translateY(-10px);
+}
+
+/* ყურსასმენი */
+.o-hp {
+    width: 108px;
+    height: 86px;
+    border: 9px solid var(--o);
+    border-bottom: 0;
+    border-radius: 60px 60px 0 0;
+}
+
+.o-hp::before,
+.o-hp::after {
+    bottom: -18px;
+    width: 28px;
+    height: 50px;
+    background: var(--o);
+    border-radius: 12px;
+}
+
+.o-hp::before {
+    left: -18px;
+}
+
+.o-hp::after {
+    right: -18px;
+}
+
+/* საათი: .obj = თასმა, ::before = კორპუსი, ::after = ეკრანი */
+.o-watch {
+    width: 50px;
+    height: 156px;
+    background: var(--a);
+    border-radius: 12px;
+}
+
+.o-watch::before {
+    left: 50%;
+    top: 50%;
+    width: 88px;
+    height: 88px;
+    transform: translate(-50%, -50%);
+    background: var(--o);
+    border-radius: 26px;
+}
+
+.o-watch::after {
+    left: 50%;
+    top: 50%;
+    width: 68px;
+    height: 68px;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(160deg, var(--cobalt), #151a24 75%);
+    border-radius: 18px;
+    transition: filter .4s;
+}
+
+/* დინამიკი */
+.o-spk {
+    width: 78px;
+    height: 132px;
+    background: var(--o);
+    border-radius: 39px;
+}
+
+.o-spk::before {
+    inset: 22px 12px 38px;
+    background: radial-gradient(rgba(255, 255, 255, .6) 2px, transparent 2.6px) 0 0 / 11px 11px;
+}
+
+.o-spk::after {
+    left: 50%;
+    bottom: 14px;
+    width: 16px;
+    height: 16px;
+    transform: translateX(-50%);
+    background: var(--a);
+    border-radius: 50%;
+}
+
+/* ტელეფონი */
+.o-phone {
+    width: 84px;
+    height: 152px;
+    background: var(--o);
+    border-radius: 20px;
+}
+
+.o-phone::before {
+    inset: 6px;
+    background: linear-gradient(165deg, var(--cobalt), #e0603f 140%);
+    border-radius: 15px;
+    transition: filter .4s;
+}
+
+.o-phone::after {
+    left: 50%;
+    top: 14px;
+    width: 22px;
+    height: 7px;
+    transform: translateX(-50%);
+    background: #0f1420;
+    border-radius: 4px;
+}
+
+/* ქეისი */
+.o-case {
+    width: 118px;
+    height: 80px;
+    background: var(--o);
+    border-radius: 42px;
+}
+
+.o-case::before {
+    left: 0;
+    right: 0;
+    top: 34px;
+    height: 2px;
+    background: rgba(21, 26, 36, .12);
+}
+
+.o-case::after {
+    left: 50%;
+    top: 14px;
+    width: 9px;
+    height: 9px;
+    transform: translateX(-50%);
+    background: var(--a);
+    border-radius: 50%;
+}
+
+/* კამერა */
+.o-cam {
+    width: 130px;
+    height: 90px;
+    background: var(--o);
+    border-radius: 14px;
+}
+
+.o-cam::before {
+    left: 50%;
+    top: 50%;
+    width: 64px;
+    height: 64px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, #0f1420 0 18%, var(--a) 19% 27%, #1b2233 28% 55%, #cfd6dd 56% 62%, #151a24 63%);
+}
+
+.o-cam::after {
+    left: 14px;
+    top: -11px;
+    width: 32px;
+    height: 12px;
+    background: var(--o);
+    border-radius: 5px 5px 0 0;
+}
+
+.product:hover .o-watch::after,
+.product:hover .o-phone::before {
+    filter: brightness(1.35);
+}
+
+/* + ღილაკი */
+.add {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 46px;
+    height: 46px;
+    padding: 0 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--ink);
+    color: var(--fog);
+    border-radius: 99px;
+    transition: width .3s cubic-bezier(.2, .8, .2, 1), background .2s;
+}
+
+.add::before {
+    content: "დამატება";
+    font-size: .9rem;
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+.add::after {
+    content: "+";
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.product:hover .add {
+    width: 174px;
+}
+
+.product:hover .add::before {
+    opacity: 1;
+}
+
+.add:hover {
+    background: var(--cobalt);
+}
+
+@media (hover: none) {
+    .add {
+        width: 174px;
+    }
+
+    .add::before {
+        opacity: 1;
+    }
+}
+
+/* დამატებული პროდუქტის ღილაკი */
+#p1:checked~main .a1,
+#p2:checked~main .a2,
+#p3:checked~main .a3,
+#p4:checked~main .a4,
+#p5:checked~main .a5,
+#p6:checked~main .a6 {
+    background: var(--cobalt);
+}
+
+#p1:checked~main .a1::before,
+#p2:checked~main .a2::before,
+#p3:checked~main .a3::before,
+#p4:checked~main .a4::before,
+#p5:checked~main .a5::before,
+#p6:checked~main .a6::before {
+    content: "წაშლა";
+}
+
+#p1:checked~main .a1::after,
+#p2:checked~main .a2::after,
+#p3:checked~main .a3::after,
+#p4:checked~main .a4::after,
+#p5:checked~main .a5::after,
+#p6:checked~main .a6::after {
+    content: "✓";
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.meta h3 {
+    font: 400 1.2rem/1.3 var(--serif);
+    letter-spacing: -.01em;
+}
+
+.meta .price {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* ---------- გარანტიები ---------- */
+.promise {
+    max-width: 1180px;
+    margin: 0 auto 72px;
+    padding: 24px max(5vw, 20px) 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.promise {
+    border-top: 1px solid var(--ink);
+    width: calc(100% - 2 * max(5vw, 20px));
+    padding-inline: 0;
+}
+
+.promise strong {
+    display: block;
+    font: 300 2rem/1.2 var(--serif);
+    letter-spacing: -.02em;
+}
+
+.promise span {
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+footer {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 max(5vw, 20px) 40px;
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+/* ---------- Cart drawer ---------- */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    background: rgba(21, 26, 36, .35);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+}
+
+#cart {
+    position: fixed;
+    z-index: 10;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: min(420px, calc(100% - 20px));
+    display: flex;
+    flex-direction: column;
+    background: var(--fog);
+    border-radius: 24px;
+    transform: translateX(calc(100% + 20px));
+    transition: transform .45s cubic-bezier(.2, .8, .2, 1);
+}
+
+#cart-toggle:checked~.overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#cart-toggle:checked~#cart {
+    transform: none;
+}
+
+.cart-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 24px 16px;
+}
+
+.cart-head h2 {
+    font: 400 1.6rem/1 var(--serif);
+    letter-spacing: -.02em;
+}
+
+.close {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    transition: background .2s;
+}
+
+.close:hover {
+    background: #fff;
+}
+
+#cart-items {
+    flex: 1;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0 24px;
+    border-top: 1px solid var(--line);
+}
+
+.empty {
+    display: none;
+    padding: 40px 0;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: 1.1rem;
+}
+
+#p1:not(:checked)~#p2:not(:checked)~#p3:not(:checked)~#p4:not(:checked)~#p5:not(:checked)~#p6:not(:checked)~#cart .empty {
+    display: block;
+}
+
+.item {
+    display: none;
+    grid-template-columns: 52px 1fr auto;
+    gap: 4px 16px;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+#p1:checked~#cart .l1,
+#p2:checked~#cart .l2,
+#p3:checked~#cart .l3,
+#p4:checked~#cart .l4,
+#p5:checked~#cart .l5,
+#p6:checked~#cart .l6 {
+    display: grid;
+}
+
+.thumb {
+    position: relative;
+    grid-row: span 2;
+    width: 52px;
+    height: 66px;
+    background: var(--t);
+    border-radius: 99px 99px 6px 6px;
+}
+
+.thumb::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    width: 20px;
+    height: 20px;
+    transform: translateX(-50%);
+    background: var(--o);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(21, 26, 36, .08);
+}
+
+.item .name {
+    font: 400 1.05rem/1.3 var(--serif);
+}
+
+.item .sum {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.remove {
+    justify-self: start;
+    color: var(--muted);
+    font-size: .8rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.remove:hover {
+    color: var(--ink);
+}
+
+.cart-foot {
+    padding: 20px 24px 24px;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+}
+
+.total strong {
+    font: 400 2rem/1 var(--serif);
+    letter-spacing: -.02em;
+}
+
+.checkout {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    border-radius: 99px;
+    background: var(--ink);
+    color: var(--fog);
+    text-decoration: none;
+    opacity: .3;
+    pointer-events: none;
+    transition: background .2s;
+}
+
+.pick:checked~#cart .checkout {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.checkout:hover {
+    background: var(--cobalt);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding-bottom: 64px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 44px 20px;
+    }
+
+    .product:nth-child(3n+2) {
+        margin-top: 0;
+    }
+
+    .product:nth-child(2n) {
+        margin-top: 40px;
+    }
+
+    .promise {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .meta {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .meta h3 {
+        font-size: 1.05rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
